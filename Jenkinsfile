@@ -1,15 +1,15 @@
-Library("my-shared-library") _
+Library("my-shared-lib") _
 pipeline {
     agent any
 
     stages {
-        stage('checkout') { 
+        stage("checkout") { 
         }
-        stage('code quality sonar check') {
+        stage("code quality sonar check") {
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
                     sh '''
-                    'sonar-scanner'
+                    sonar-scanner
                     '''
                 }
                 
