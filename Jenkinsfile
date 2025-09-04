@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     stages {
-        stage("checkout") { 
+        stage("Checkout") { 
         }
         stage("code quality sonar check") {
             steps {
