@@ -1,19 +1,21 @@
 @Library("my-shared-lib") _
+
 pipeline {
     agent any
 
     stages {
         stage("Checkout") { 
+            steps {
+                echo "Code already checked out by Jenkins SCM"
+            }
         }
-        stage("code quality sonar check") {
+
+        stage("Code Quality - SonarQube") {
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
-                    sh '''
-                    sonar-scanner
-                    '''
-                }
-                
+                    sh 'sonar-scanner'
                 }
             }
         }
-    }
+
+    }}
