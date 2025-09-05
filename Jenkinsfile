@@ -14,10 +14,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonar_server') {
                     sh '''
-                      sonar-scanner \
-                      -Dsonar.projectKey=node_backend \
-                      -Dsonar.projectName="Node Backend" \
-                      -Dsonar.sources=.
+                      sonar-scanner
                     '''
                 }
             }
@@ -25,7 +22,7 @@ pipeline {
 
         stage("Quality Gate") {
             steps {
-                timeout(time: 1, unit: 'HOURS') {
+                timeout(time: 1, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
