@@ -12,7 +12,7 @@ pipeline {
 
         stage("Code Quality - SonarQube") {
             steps {
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar_server') {
                     sh 'sonar-scanner'
                 }
             }
